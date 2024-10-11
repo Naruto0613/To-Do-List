@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+:root {
+    --font-family: "Poppins", sans-serif;
+    --background: #f4f6fc;
+    --blue: #0a57a2;
+    --black: #1f1f21;
+    --green: #81a969;
+    --red: #cf352e;
+    --progress: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
+    --blue-gradient: linear-gradient(to right, #0a57a2, #0a57a2);
+}
