@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
 :root {
+    --gradient-animation-0: linear-gradient(90deg, #0cebeb, #20e3b2, #29ffc6);
+    --gradient-animation-25: linear-gradient(180deg, #0cebeb, #20e3b2, #29ffc6);
+    --gradient-animation-50: linear-gradient(270deg, #0cebeb, #20e3b2, #29ffc6);
+    --gradient-animation-75: linear-gradient(360deg, #0cebeb, #20e3b2, #29ffc6);
+    --gradient-animation-100: linear-gradient(
+        450deg,
+        #0cebeb,
+        #20e3b2,
+        #29ffc6
+    );
     --font-family: "Poppins", sans-serif;
     --background: #f4f6fc;
     --blue: #0a57a2;
@@ -9,4 +19,223 @@
     --red: #cf352e;
     --progress: linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6);
     --blue-gradient: linear-gradient(to right, #0a57a2, #0a57a2);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    color: white;
+    background-color: var(--background);
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    overflow: hidden;
+}
+
+header {
+    background-color: var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    padding: 30px;
+}
+
+.main-header {
+    min-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+#task-summary {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--blue);
+    min-width: 45px;
+    text-align: center;
+}
+
+#progress-bar {
+    background-color: white;
+    min-width: 350px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+#progress {
+    background: var(--progress);
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 1s ease all;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    min-width: 350px;
+}
+
+#input-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#input {
+    background-color: white;
+    flex: 1;
+    padding: 16px;
+    border-style: solid;
+    border-width: 2px;
+    border-image: var(--blue-gradient);
+    border-image-slice: 1;
+    color: var(--black);
+    outline: none;
+}
+
+#input::placeholder {
+    color: var(--blue);
+    opacity: 0.6;
+}
+
+#microphone {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: var(--blue);
+    cursor: pointer;
+}
+
+#add-task {
+    all: unset;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.input-icon {
+    font-size: 25px;
+}
+
+#task-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 350px;
+    list-style: none;
+}
+
+.task {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--black);
+    border: 2px solid transparent;
+    transition: 0.3s ease border;
+}
+
+.task.completed label {
+    text-decoration: line-through;
+}
+
+.task.editing {
+    border: 2px solid var(--blue);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.checkbox-container input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    user-select: none;
+    cursor: pointer;
+}
+
+.task .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.task button {
+    all: unset;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.task .delete {
+    color: var(--red);
+}
+
+.task-icon {
+    pointer-events: none;
+}
+
+@keyframes gradient-animation {
+    0% {
+        border-image-source: var(--gradient-animation-0);
+    }
+    25% {
+        border-image-source: var(--gradient-animation-25);
+    }
+    50% {
+        border-image-source: var(--gradient-animation-50);
+    }
+    75% {
+        border-image-source: var(--gradient-animation-75);
+    }
+    100% {
+        border-image-source: var(--gradient-animation-100);
+    }
+}
+
+input.active {
+    animation: gradient-animation 3s linear infinite;
 }
